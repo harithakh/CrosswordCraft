@@ -1,0 +1,24 @@
+body {
+  margin: 0;
+ }
+
+.site-title{
+  font-size: 2rem;
+}
+
+.header ul{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+.header a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.header li.active {
+  background-color: #555;
+}

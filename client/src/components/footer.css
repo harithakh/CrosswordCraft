@@ -1,0 +1,15 @@
+.footer-div{
+    background-color: #293462; 
+    height: 7rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    padding: 0 1rem;
+}
+
+.footer-div a{
+    color: beige;
+    font-family: 'Sniglet', cursive;
+    text-decoration: none;
+}

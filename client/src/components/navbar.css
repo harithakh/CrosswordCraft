@@ -1,0 +1,15 @@
+.nav{
+    background-color: #FFF80A;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    padding-left: 5rem;
+    font-family: 'Sniglet', cursive;
+    
+}
+
+.nav a{
+    text-decoration: none;
+}

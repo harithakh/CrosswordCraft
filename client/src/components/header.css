@@ -1,0 +1,25 @@
+.header-nav{
+    background-color: #293462; 
+    height: 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    padding: 0 1rem;
+}
+
+.site-title{
+    font-family: 'Sniglet', cursive;
+    color: beige;
+    text-decoration: none;
+}
+
+.sign-in-link{
+    font-family: 'Roboto';
+    font-weight:bold;
+    color: white;
+    background-color: #D61C4E;
+    padding: 10px;
+    border-radius: 7px;
+    text-decoration: none;
+}
