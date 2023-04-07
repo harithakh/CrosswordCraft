@@ -1,23 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import GridBox from "./GridBox";
 import "./crosswordgrid.css";
 
-function CrosswordGrid() {
-  let boxWidth = 50;
-  let boxHeight = 50;
+function CrosswordGrid(props) {
+  const boxWidth = 50;
+  const boxHeight = 50;
 
-  //let puzzle_id = 1;
-  let puzzle_size = 5;
+  // console.log(props.pu_data && props.pu_data.puzzle_id); // need to check if the object is null or not.
+  console.log(props.pu_data);
+  /* The ?. allows us to safely access properties of an object without getting an error
+   if the object is nullish (null or undefined).
+   The ?? is called the Nullish Coalescing operator,
+    which allows us to provide a default value in case a value is nullish (null or undefined).
+  */
 
-  //puzzle eke size eka anuwa display wena puzzle eka wenas wenna nam me 2D array
-  //ekai yata 2D array ekai dekama size eka wenas wenna one
-  let index_numbers = [
-    [1, 0, 2, 0, 3],
-    [0, 0, 0, 0, 0],
-    [4, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-    [5, 0, 0, 0, 0],
-  ];
+  let puzzle_id = props.pu_data?.puzzle_id ?? "";
+  let puzzle_size = props.pu_data?.puzzle_size ?? "";
+
+  //puzzle eke size eka anuwa display wena puzzle eka wenas wenna nam index_numbers_2d_array ekei
+  //ekai yata letters_2d_array ekai dekama size eka wenas wenna one
+  
+  //here the 1D array that came from props turns into a 2D array
+  let index_numbers = props.pu_data?.boxes?.map(obj => obj.box_number);
+  var index_numbers_2d_array = []
+  for(let i=0; i<index_numbers?.length; i+=puzzle_size){
+    const row = index_numbers.slice(i, i+puzzle_size);
+    index_numbers_2d_array.push(row);
+  }
+  console.log(index_numbers); //4 test
+  console.log(index_numbers_2d_array); //4 test
 
   let letters = [
     ["t", "e", "p", "e", "e"],
@@ -26,6 +37,14 @@ function CrosswordGrid() {
     ["n", null, "u", null, "l"],
     ["t", "i", "p", "s", "y"],
   ];
+
+  let letters1 = props.pu_data?.boxes?.map(obj => obj.letter);
+  let letters_2d_array = [] ;
+  for(let i=0; i<letters1?.length; i+=puzzle_size){
+    const row = letters1.slice(i, i+puzzle_size);
+    letters_2d_array.push(row);
+  }
+  console.log(letters_2d_array);
 
   //these are the visible letters at the first. this is an array of tuples.
   //to access those tuples, we can use array indexing with square brackets, just like with a regular array.
@@ -77,9 +96,9 @@ function CrosswordGrid() {
           text_y={t_y}
           width={boxWidth}
           height={boxHeight}
-          index_num={index_numbers[i][j]}
+          index_num={index_numbers_2d_array[i][j]}
           letter_visibility={isVisibleAtStart}
-          letter={letters[i][j]}
+          letter={letters_2d_array[i][j]}
         />
       );
     }
@@ -88,7 +107,7 @@ function CrosswordGrid() {
   return (
     <>
       <div className="grid-div">
-      <p>puzzle #</p>
+        <p>puzzle #{puzzle_id}</p>
         <svg
           preserveAspectRatio="xMinYMin meet"
           width={puzzle_size * 50}
