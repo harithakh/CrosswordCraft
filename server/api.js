@@ -3,17 +3,20 @@ const router = express.Router();
 const puzzle = require("./dataModel");
 
 router.get("/home", (req, res) => {
-  puzzle.find({}, (err, data) => {
-    if (err) {
-      
-      console.log(err);
-      res.sendStatus(500);
-    } else {
-      //console.log(data);
-      res.send(data);
-    }
-  });
+  const ids = [1, 2, 3]; // this must be changed with random numbers.
 
+  puzzle.find(
+    { puzzle_id: { $in: ids } },
+    (err, data) => {
+      if (err) {
+        console.log(err);
+        res.sendStatus(500);
+      } else {
+        //console.log(data);
+        res.send(data);
+      }
+    }
+  );
 });
 
 module.exports = router;

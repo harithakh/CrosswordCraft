@@ -1,26 +1,26 @@
 const mongoose = require("mongoose");
 
 const schema = new mongoose.Schema({
-  puzzleId: Number,
-  puzzleSize: Number,
-  isPublic: Number,
-  createdBy: String,
-  dateCreated: Date,
+  puzzle_id: Number, //this variable name should be the same as the name in the mongodb document.
+  puzzle_size: Number,
+  public: Number,
+  created_by: String,
+  date_created: Date,
   tags: [String],
   boxes: [
     {
-      boxNumber: Number,
+      box_number: Number,
       letter: String,
     },
   ],
-  visibleLetterIndexes: [
+  visible_letter_indexs: [
     {
-      boxIndex: [Number],
+      box_index: [Number],
       letter: String,
     },
   ],
-  cluesAcross: [String],
-  cluesDown: [String],
+  clues_across: [String],
+  clues_down: [String],
 });
 
 const Puzzle = mongoose.model("Puzzle", schema);

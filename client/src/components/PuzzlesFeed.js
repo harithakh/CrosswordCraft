@@ -12,14 +12,15 @@ function PuzzlesFeed() {
   const [data, setData] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/home")
+      .get("http://localhost:8000/api/home") //the api.js sends the entire document specified from the id.
       .then((response) => setData(response.data))
       .catch((error) => console.log(error));
     setIsLoading(false);
   }, []);
 
-  console.log(data[2]); //for testing
-
+  console.log(data); //for testing
+  // console.log(data[1] && data[1].puzzle_id);
+  // var dataToSend = data[0];
   if (isLoading) {
     return (
       <div
@@ -37,19 +38,19 @@ function PuzzlesFeed() {
 
   return (
     <div className="puzzle-feed">
-      <div>{data.length > 0 && <p>....its {data[1].clues_across[0]}</p>}</div>
+      {/* <div>{data.length > 0 && <p>....its {data[1].visible_letter_indexs}</p>}</div> */}
+      <CrosswordGrid pu_data={data[0]}/>
+      <CrosswordGrid pu_data={data[1]}/>
+      <CrosswordGrid pu_data={data[0]}/>
+      <CrosswordGrid pu_data={data[2]}/>
+      {/* <CrosswordGrid />
       <CrosswordGrid />
       <CrosswordGrid />
       <CrosswordGrid />
       <CrosswordGrid />
       <CrosswordGrid />
       <CrosswordGrid />
-      <CrosswordGrid />
-      <CrosswordGrid />
-      <CrosswordGrid />
-      <CrosswordGrid />
-      <CrosswordGrid />
-      <CrosswordGrid />
+      <CrosswordGrid /> */}
     </div>
   );
 }
