@@ -1,0 +1,10 @@
+.text-input {
+    width: 17px;
+}
+
+.text-element-display {
+    display: block;
+    font-size: 24px;
+    width: 25px;
+    font-family: Sniglet;
+}

@@ -4,4 +4,30 @@
     margin: 10px;
     padding: 10px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+}
+
+.details-div{
+    display: flex;
+    align-items: center;
+}
+
+p{
+    padding: 0 25px;
+    font-family: 'Sniglet', cursive;
+}
+
+.link-to-solve{
+    text-decoration: none;
+    margin-left: 600px;
+    font-family: 'Roboto';
+    font-weight:bold;
+    color: white;
+    background-color: #D61C4E;
+    padding: 5px 50px;
+    border-radius: 7px;
 }

@@ -5,18 +5,30 @@ const puzzle = require("./dataModel");
 router.get("/home", (req, res) => {
   const ids = [1, 2, 3]; // this must be changed with random numbers.
 
-  puzzle.find(
-    { puzzle_id: { $in: ids } },
-    (err, data) => {
-      if (err) {
-        console.log(err);
-        res.sendStatus(500);
-      } else {
-        //console.log(data);
-        res.send(data);
-      }
+  puzzle.find({ puzzle_id: { $in: ids } }, (err, data) => {
+    if (err) {
+      console.log(err);
+      res.sendStatus(500);
+    } else {
+      //console.log(data);
+      res.send(data);
     }
-  );
+  });
+});
+
+router.get("/puzzles/:id", (req, res) => {
+  const puzzleId = req.params.id;
+
+  puzzle.findOne({ puzzle_id: puzzleId }, (err, data) => {
+    if (err) {
+      console.log(err);
+      res.sendStatus(500);
+    } else if (!data) {
+      res.sendStatus(404);
+    } else {
+      res.send(data);
+    }
+  });
 });
 
 module.exports = router;

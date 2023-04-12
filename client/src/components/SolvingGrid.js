@@ -1,27 +1,15 @@
 import React from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-import GridBox from "./GridBox";
-import "./crosswordgrid.css";
+import GridBox from "./puzzle/GridBox";
 
-function CrosswordGrid(props) {
+import "./solvingGrid.css";
+
+function SolvingGrid(props) {
   const boxWidth = 50;
   const boxHeight = 50;
-
-  var { puzzle_id } = useParams();
-
-  /* The ?. allows us to safely access properties of an object without getting an error
-   if the object is nullish (null or undefined).
-   The ?? is called the Nullish Coalescing operator,
-    which allows us to provide a default value in case a value is nullish (null or undefined).
-  */
-
-  puzzle_id = props.pu_data?.puzzle_id ?? "";
   let puzzle_size = props.pu_data?.puzzle_size ?? "";
   let created_by = props.pu_data?.created_by ?? "";
-
-  //puzzle eke size eka anuwa display wena puzzle eka wenas wenna nam index_numbers_2d_array ekei
-  //ekai yata letters_2d_array ekai dekama size eka wenas wenna one
 
   //here the 1D array that came from props turns into a 2D array
   let index_numbers = props.pu_data?.boxes?.map((obj) => obj.box_number);
@@ -30,16 +18,18 @@ function CrosswordGrid(props) {
     const row = index_numbers.slice(i, i + puzzle_size);
     index_numbers_2d_array.push(row);
   }
-  // console.log(index_numbers); //test
-  // console.log(index_numbers_2d_array); //test
-
   let letters1 = props.pu_data?.boxes?.map((obj) => obj.letter);
   let letters_2d_array = [];
   for (let i = 0; i < letters1?.length; i += puzzle_size) {
     const row = letters1.slice(i, i + puzzle_size);
     letters_2d_array.push(row);
   }
-  // console.log(letters_2d_array); //test
+  //this creates an empty 2d array of null elements, size = puzzle_size*puzzle_size
+  const array_2d = [
+    ...Array(puzzle_size)
+      .fill(null)
+      .map(() => new Array(puzzle_size).fill(null)),
+  ];
 
   //these are the visible letters at the first. this is an array of tuples.
   //to access those tuples, we can use array indexing with square brackets, just like with a regular array.
@@ -47,13 +37,6 @@ function CrosswordGrid(props) {
     [0, 0],
     [1, 2],
     [4, 1], //meka ain karala db eken data ganna onee
-  ];
-
-  //this creates an empty 2d array of null elements, size = puzzle_size*puzzle_size
-  const array_2d = [
-    ...Array(puzzle_size)
-      .fill(null)
-      .map(() => new Array(puzzle_size).fill(null)),
   ];
 
   // this key helps React identify which elements have changed.
@@ -82,7 +65,7 @@ function CrosswordGrid(props) {
       //assigning <GridBox /> to the array.
       array_2d[i][j] = (
         <GridBox
-          getInput={false} //this must be false for crossword feed. its true for now
+          getInput={true} //this must be false for crossword feed. its true for now
           key={id_key++}
           box_x={50 * j}
           box_y={b_y}
@@ -102,11 +85,7 @@ function CrosswordGrid(props) {
 
   return (
     <>
-      <div className="grid-div">
-        <div className="details-div">
-          <p>puzzle {puzzle_id}</p>
-          <p>Created by: {created_by}</p>
-        </div>
+      <div className="grid-div-solving-grid">
         <svg
           preserveAspectRatio="xMinYMin meet"
           width={puzzle_size * 50}
@@ -122,12 +101,9 @@ function CrosswordGrid(props) {
             {array_2d}
           </g>
         </svg>
-        <Link to={`pages/solve/${puzzle_id}`} className="link-to-solve">
-          Solve
-        </Link>
       </div>
     </>
   );
 }
 
-export default CrosswordGrid;
+export default SolvingGrid;

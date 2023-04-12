@@ -15,9 +15,9 @@ function NavBar() {
       <Link to="/pages/howto" className="">
         How To
       </Link>
-      <Link to="pages/solve" className="">
+      {/* <Link to="pages/solve" className="">
         Solve-temp
-      </Link>
+      </Link> */}
       
     </nav>
   );

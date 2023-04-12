@@ -20,7 +20,7 @@ function PuzzlesFeed() {
 
   console.log(data); //for testing
   // console.log(data[1] && data[1].puzzle_id);
-  // var dataToSend = data[0];
+  
   if (isLoading) {
     return (
       <div

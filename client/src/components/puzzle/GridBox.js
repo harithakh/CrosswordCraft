@@ -1,8 +1,8 @@
-import React from "react";
+import { React, useState } from "react";
 import "./gridbox.css";
 
 function GridBox(props) {
-  //if the index_num is > 0, index is set to index_num.
+  //if the index_num is > 0,'index' is set to index_num.
   if (props.index_num > 0) {
     var index = props.index_num;
   }
@@ -15,7 +15,13 @@ function GridBox(props) {
     var the_letter = props.letter;
   }
 
-  //meke input field ekak danda one. useState hooks use karanna one userge input eka save kara ganna.
+  const [inputText, setTextInput] = useState("");
+
+  const handleInputChange = (event) => {
+    setTextInput(event.target.value);
+  };
+  const itt = props.getInput;
+
   return (
     <g>
       <rect
@@ -38,6 +44,7 @@ function GridBox(props) {
       </text>
 
       <text
+        className="main-letter"
         x={props.text_x}
         y={props.text_y}
         textAnchor="start"
@@ -46,6 +53,25 @@ function GridBox(props) {
       >
         {the_letter}
       </text>
+
+      {/* Render the input only if letter_visibility is false */}
+      {props.getInput && !props.letter_visibility && !isBlack && (
+        <foreignObject
+          x={props.text_x - 2}
+          y={props.text_y - 22}
+          width={props.width - 25}
+          height={props.height - 25}
+        >
+          <text className="text-element-display">{inputText}</text>
+          <input
+            className="text-input"
+            type="text"
+            value={inputText}
+            onChange={handleInputChange}
+            style={{ opacity: 0 }} //opasiti is set to zero, <input> element is hidden but take the input and set its value to
+          ></input>
+        </foreignObject>
+      )}
     </g>
   );
 }

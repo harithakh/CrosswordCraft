@@ -26,7 +26,9 @@ function App() {
 
           <Route path="pages/create-puzzle" element={<CreatePuzzles />} />
           <Route path="pages/about" element={<About />} />
-          <Route path="pages/solve" element={<Solve />} />
+          {/* When this URL is visited, the :puzzleId parameter will be automatically parsed by react-router-dom,
+           and the value of puzzleId will be passed to the UserDetail component as a prop. */}
+          <Route path="pages/solve/:puzzleId" element={<Solve />} /> 
         </Routes>
       </div>
 
