@@ -11,6 +11,7 @@ import NavBar from "./components/NavBar";
 import CreatePuzzles from "./pages/create-puzzles";
 import Footer from "./components/Footer";
 import Solve from "./pages/solve";
+import SignUp from "./pages/sign-up";
 
 function App() {
 
@@ -28,7 +29,8 @@ function App() {
           <Route path="pages/about" element={<About />} />
           {/* When this URL is visited, the :puzzleId parameter will be automatically parsed by react-router-dom,
            and the value of puzzleId will be passed to the UserDetail component as a prop. */}
-          <Route path="pages/solve/:puzzleId" element={<Solve />} /> 
+          <Route path="pages/solve/:puzzleId" element={<Solve />} />
+          <Route path="pages/sign-up" element={<SignUp />}/>
         </Routes>
       </div>
 

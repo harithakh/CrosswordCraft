@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 
 import GridBox from "./puzzle/GridBox";
@@ -6,6 +6,7 @@ import GridBox from "./puzzle/GridBox";
 import "./solvingGrid.css";
 
 function SolvingGrid(props) {
+    
   const boxWidth = 50;
   const boxHeight = 50;
   let puzzle_size = props.pu_data?.puzzle_size ?? "";
@@ -38,6 +39,14 @@ function SolvingGrid(props) {
     [1, 2],
     [4, 1], //meka ain karala db eken data ganna onee
   ];
+  
+  // for passing data from <GridBox /> to <Solve>
+  const [dataFromGridBox, setDataFromGridBox] =useState('');
+  function handleGridBoxDataChange(inputText){
+    setDataFromGridBox(inputText);
+    props.onSolutionGridChange(dataFromGridBox);
+  }
+
 
   // this key helps React identify which elements have changed.
   let id_key = 0;
@@ -67,6 +76,7 @@ function SolvingGrid(props) {
         <GridBox
           getInput={true} //this must be false for crossword feed. its true for now
           key={id_key++}
+          onTextInputChange = {handleGridBoxDataChange}
           box_x={50 * j}
           box_y={b_y}
           mini_number_x={5 + 50 * j}

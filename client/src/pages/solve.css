@@ -1,3 +1,7 @@
+p {
+    margin : 0 0;
+    padding-bottom: 5px;
+}
 .solve-area{
     /* display: inline-block;*/ /* div element adjust its size according to its child elements */
    
@@ -9,4 +13,17 @@
    
     background-color: rgb(218, 255, 255);
     display: inline-block;
+}
+
+button{
+    
+    float: right;
+    margin-right: 100px;
+    margin-bottom: 20px;
+    font-family: 'Roboto';
+    font-weight: bold;
+    color: white;
+    background-color: #D61C4E;
+    padding: 10px;
+    border-radius: 7px;
 }

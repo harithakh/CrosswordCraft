@@ -1,6 +1,8 @@
 import React from "react";
 import { useState } from "react";
 
+//import './form-styles.css'
+
 function CreatePuzzles() {
   //puzzle size user input
   const [puzzleSizeInput, setPuzzleSizeInput] = useState(0);
@@ -81,10 +83,10 @@ function CreatePuzzles() {
   return (
     <>
       <form>
-        <label>Crossword Puzzle Title: </label>
+        <label className="lable-styles">Crossword Puzzle Title: </label>
         <input type="Text" style={{ marginBottom: "10px" }} />
         <br />
-        <label>Size of the puzzle: </label>
+        <label className="lable-styles">Size of the puzzle: </label>
         <input
           type="number"
           value={puzzleSizeInput}

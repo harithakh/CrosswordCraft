@@ -5,7 +5,7 @@ import './footer.css'
 function Footer() {
   return (
     <div className="footer-div">
-      <Link to="/pages/about" className="">
+      <Link to="/pages/about" className="about-footer">
         About
       </Link>
     </div>

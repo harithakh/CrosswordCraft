@@ -15,16 +15,18 @@ function GridBox(props) {
     var the_letter = props.letter;
   }
 
-  const [inputText, setTextInput] = useState("");
+  //to get user input
+  const [textInput, setTextInput] = useState("");
 
   const handleInputChange = (event) => {
     setTextInput(event.target.value);
+    props.onTextInputChange(event.target.value); // to pass data to parent componet.
   };
-  const itt = props.getInput;
+  
 
   return (
     <g>
-      <rect
+      <rect className="grid-box-rect"
         x={props.box_x}
         y={props.box_y}
         width={props.width}
@@ -62,11 +64,11 @@ function GridBox(props) {
           width={props.width - 25}
           height={props.height - 25}
         >
-          <text className="text-element-display">{inputText}</text>
+          <text className="text-element-display">{textInput}</text>
           <input
             className="text-input"
             type="text"
-            value={inputText}
+            value={textInput}
             onChange={handleInputChange}
             style={{ opacity: 0 }} //opasiti is set to zero, <input> element is hidden but take the input and set its value to
           ></input>
