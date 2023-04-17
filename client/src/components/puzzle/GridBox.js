@@ -70,7 +70,7 @@ function GridBox(props) {
             type="text"
             value={textInput}
             onChange={handleInputChange}
-            style={{ opacity: 0 }} //opasiti is set to zero, <input> element is hidden but take the input and set its value to
+            style={{ opacity: 0 }} //opasity is set to zero, <input> element is hidden but take the input and set its value to
           ></input>
         </foreignObject>
       )}

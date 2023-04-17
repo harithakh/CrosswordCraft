@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-//import './form-styles.css'
+import "./create-puzzles.css";
 
 function CreatePuzzles() {
   //puzzle size user input
@@ -76,49 +76,91 @@ function CreatePuzzles() {
 
   // publish button
   const [publishPuzzle, setPublishPuzzle] = useState(false);
-  const handlePublishButton = ()=>{
+  const handlePublishButton = () => {
     //publish button should be completed
-  }
+  };
 
   return (
     <>
-      <form>
-        <label className="lable-styles">Crossword Puzzle Title: </label>
-        <input type="Text" style={{ marginBottom: "10px" }} />
-        <br />
-        <label className="lable-styles">Size of the puzzle: </label>
-        <input
-          type="number"
-          value={puzzleSizeInput}
-          onChange={handlePuzzleSizeInput}
-        />{" "}
-        <br />
-        <button type="button" onClick={handleButtonClick}>
-          Next
-        </button>
-        <p>Maximum number of rows/columns available is 15.</p>
-        {/* below code is conditional rendering. React will only render the component 
+      <div className="puzzle-create-form-div">
+        <form>
+          <label className="puzzle-create-lable">
+            Crossword Puzzle Title:
+            <input type="Text" style={{ marginBottom: "10px" }} />
+          </label>
+          <br />
+          <label className="puzzle-create-lable">
+            Size of the puzzle:
+            <input
+              type="number"
+              value={puzzleSizeInput}
+              onChange={handlePuzzleSizeInput}
+            />
+          </label>
+          <br />
+          <button
+            className="create-puzzle-button"
+            type="button"
+            onClick={handleButtonClick}
+          >
+            Next
+          </button>
+          <br />
+          <p>
+            Maximum number of rows/columns available is 15. Type the relevant
+            letter in the box. if a box has an index number, type it befor the
+            letter. Eg: 1, A
+          </p>
+          {/* below code is conditional rendering. React will only render the component 
         if the condition on the left-hand side of the && operator is true.  */}
-        {showGrid && puzzleSizeInput < 16 && (
-          <div>
-            <table>
-              <tbody>{tableRows}</tbody>
-              <p>{inputValues["0-0"]}</p>
-            </table>
-          </div>
-        )}
-        <br />
-        <label>Clues Across:</label>
-        <textarea value={cluesAcross} onChange={handleCluesAcross} />
-        <br />
-        <label>Clues Down:</label>
-        <textarea value={cluesDown} onChange={handleCluesdown} />
-        <br />
-        <label>tags:</label>
-        <textarea value={tagsInput} onChange={handleTagsInput} />
-        <br />
-        <button type="button">Publish</button>
-      </form>
+          {showGrid && puzzleSizeInput < 16 && (
+            <div>
+              <table>
+                <tbody>{tableRows}</tbody>
+                <p>{inputValues["0-0"]}</p>
+              </table>
+            </div>
+          )}
+          <br />
+          <p>type clues one by one with relevant index numbers.</p>
+          <p>Eg: </p>
+          <p>1. Tent's support going around disk </p>
+          <p>4. Superior meal not small</p>
+          <p>5. Gratuities you initiated a little drunk</p>
+          <label>
+            Clues Across:
+            <textarea
+              className="puzzle-create-textarea"
+              value={cluesAcross}
+              onChange={handleCluesAcross}
+            />
+          </label>
+          <br />
+          <label>
+            Clues Down:
+            <textarea
+              className="puzzle-create-textarea"
+              value={cluesDown}
+              onChange={handleCluesdown}
+            />
+          </label>
+          <br /><br />
+          <p>type tags separated by commas.</p>
+          <p>Eg: tag1, tag2, tag3</p>
+          <label>
+            tags:
+            <textarea
+              className="puzzle-create-textarea"
+              value={tagsInput}
+              onChange={handleTagsInput}
+            />
+          </label>
+          <br />
+          <button className="create-puzzle-button" type="button">
+            Publish
+          </button>
+        </form>
+      </div>
     </>
   );
 }

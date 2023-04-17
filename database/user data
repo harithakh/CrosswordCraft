@@ -1,0 +1,16 @@
+//structure
+
+{
+  "username": String,
+  "email": String,
+  "password": String
+}
+
+// data example
+{
+  "username": "haritha_kh",
+  "email": "haritha_kh@mail.com",
+  "password": "123456"
+}
+
+

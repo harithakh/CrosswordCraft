@@ -74,7 +74,7 @@ function Solve(props) {
           />
           <p>h: {displayLetter}</p>
         </section>
-        <button type="button" onClick={handleClick}>
+        <button className="solve-button" type="button" onClick={handleClick}>
           Check Answers!
         </button>
       </div>

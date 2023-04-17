@@ -36,4 +36,10 @@
 
 .button-style{
     margin: 50px 0;
+    font-family: 'Roboto';
+    font-weight: bold;
+    color: white;
+    background-color: #D61C4E;
+    padding: 10px;
+    border-radius: 7px;
 }

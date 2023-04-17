@@ -20,8 +20,8 @@ function CrosswordGrid(props) {
   let puzzle_size = props.pu_data?.puzzle_size ?? "";
   let created_by = props.pu_data?.created_by ?? "";
 
-  //puzzle eke size eka anuwa display wena puzzle eka wenas wenna nam index_numbers_2d_array ekei
-  //ekai yata letters_2d_array ekai dekama size eka wenas wenna one
+  //both index_numbers_2d_array and letters_2d_array must have the same size in order to change the
+  // displaying puzzle size according to puzzle size
 
   //here the 1D array that came from props turns into a 2D array
   let index_numbers = props.pu_data?.boxes?.map((obj) => obj.box_number);
@@ -46,7 +46,7 @@ function CrosswordGrid(props) {
   let visible_letter_indexs = [
     [0, 0],
     [1, 2],
-    [4, 1], //meka ain karala db eken data ganna onee
+    [4, 1], //this must be replaced with the data comming from the database.
   ];
 
   //this creates an empty 2d array of null elements, size = puzzle_size*puzzle_size

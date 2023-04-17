@@ -12,6 +12,7 @@ import CreatePuzzles from "./pages/create-puzzles";
 import Footer from "./components/Footer";
 import Solve from "./pages/solve";
 import SignUp from "./pages/sign-up";
+import UserAccount from "./pages/useraccount";
 
 function App() {
 
@@ -31,6 +32,7 @@ function App() {
            and the value of puzzleId will be passed to the UserDetail component as a prop. */}
           <Route path="pages/solve/:puzzleId" element={<Solve />} />
           <Route path="pages/sign-up" element={<SignUp />}/>
+          <Route path="pages/useraccount" element={<UserAccount />}/>
         </Routes>
       </div>
 

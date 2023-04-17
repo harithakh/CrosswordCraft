@@ -1,0 +1,15 @@
+
+.user-account-div{
+    margin-left: 30px;
+    padding: 10px;
+    background-color: rgb(225, 194, 255);
+    width: 300px;
+    min-height: 200px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.user-account-edit-button{
+    margin-left: 30px;
+    margin-top: 100px;
+}

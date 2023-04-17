@@ -6,7 +6,6 @@ import "./puzzlesFeed.css";
 
 function PuzzlesFeed() {
 
-  console.log(" data data ... data "); //for testing
   const [isLoading, setIsLoading] = useState(true); // for loading screen untill data is loaded from db.
 
   const [data, setData] = useState([]);
@@ -18,8 +17,7 @@ function PuzzlesFeed() {
     setIsLoading(false);
   }, []);
 
-  console.log(data); //for testing
-  // console.log(data[1] && data[1].puzzle_id);
+  // console.log(data); //for testing
   
   if (isLoading) {
     return (
@@ -38,17 +36,12 @@ function PuzzlesFeed() {
 
   return (
     <div className="puzzle-feed">
-      {/* <div>{data.length > 0 && <p>....its {data[1].visible_letter_indexs}</p>}</div> */}
+    
       <CrosswordGrid pu_data={data[0]}/>
       <CrosswordGrid pu_data={data[1]}/>
       <CrosswordGrid pu_data={data[0]}/>
       <CrosswordGrid pu_data={data[2]}/>
       {/* <CrosswordGrid />
-      <CrosswordGrid />
-      <CrosswordGrid />
-      <CrosswordGrid />
-      <CrosswordGrid />
-      <CrosswordGrid />
       <CrosswordGrid />
       <CrosswordGrid /> */}
     </div>

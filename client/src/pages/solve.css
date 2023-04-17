@@ -15,7 +15,7 @@ p {
     display: inline-block;
 }
 
-button{
+.solve-button{
     
     float: right;
     margin-right: 100px;
